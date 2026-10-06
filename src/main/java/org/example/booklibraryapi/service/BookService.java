@@ -23,4 +23,17 @@ public class BookService {
         return new BookResponse(book.getId(), book.getTitle(), book.getAuthor(), book.getIsbn(), book.getPublishedYear(), book.isAvailable());
     }
 
+    public BookResponse createBook(BookRequest request){
+        Book book = new Book();
+
+        book.setTitle(request.title());
+        book.setAuthor(request.author());
+        book.setIsbn(request.isbn());
+        book.setPublishedYear(request.publishedYear());
+        book.setAvailable(true);
+
+        Book savedBook = bookRepository.save(book);
+        return toResponse(savedBook);
+
+    }
 }

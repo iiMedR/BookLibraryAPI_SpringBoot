@@ -19,6 +19,10 @@ public class BookController {
         this.bookService = bookService;
     }
 
+    @PostMapping
+    public BookResponse createBook(@Valid @RequestBody BookRequest Request) {
+        return bookService.createBook(Request);
+    }
 
 
 
