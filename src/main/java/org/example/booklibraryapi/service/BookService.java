@@ -57,4 +57,8 @@ public class BookService {
 
         return toResponse(existingBook);
     }
+    public void deleteBook(Long id){
+        Book existingBook = getBookEntityById(id);
+        bookRepository.delete(existingBook);
+    }
 }
