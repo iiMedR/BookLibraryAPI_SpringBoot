@@ -24,6 +24,10 @@ public class BookController {
         return bookService.createBook(Request);
     }
 
+    @GetMapping
+    public List<BookResponse> getAllBooks(){
+        return bookService.getAllBooks();
+    }
 
 
 

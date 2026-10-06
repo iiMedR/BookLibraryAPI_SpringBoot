@@ -36,4 +36,8 @@ public class BookService {
         return toResponse(savedBook);
 
     }
+    public List<BookResponse> getAllBooks(){
+        List<Book> books = bookRepository.findAll();
+        return books.stream().map(this::toResponse).toList();
+    }
 }
