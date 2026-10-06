@@ -40,4 +40,11 @@ public class BookService {
         List<Book> books = bookRepository.findAll();
         return books.stream().map(this::toResponse).toList();
     }
+    private Book getBookEntityById(Long id){
+        return bookRepository.findById(id).orElseThrow(() -> new BookNotFoundException(id));
+    }
+    public BookResponse getBookById(Long id){
+        Book book = getBookEntityById(id);
+        return toResponse(book);
+    }
 }
