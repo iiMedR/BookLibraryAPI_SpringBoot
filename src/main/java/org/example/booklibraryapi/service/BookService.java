@@ -47,4 +47,14 @@ public class BookService {
         Book book = getBookEntityById(id);
         return toResponse(book);
     }
+    @Transactional
+    public BookResponse updateBookById(Long id, BookRequest request){
+        Book existingBook = getBookEntityById(id);
+        existingBook.setTitle(request.title());
+        existingBook.setAuthor(request.author());
+        existingBook.setIsbn(request.isbn());
+        existingBook.setPublishedYear(request.publishedYear());
+
+        return toResponse(existingBook);
+    }
 }
